@@ -1,4 +1,5 @@
 <?php
+ $err = [];
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -7,7 +8,7 @@ $connection = new mysqli('localhost', 'root', '', 'jobportal');
 $email = $password = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $err = [];
+   
     
     if (isset($_POST['email']) && !empty($_POST['email']) && trim($_POST['email'])) {
         $email = $_POST['email'];
@@ -36,10 +37,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('location:empdashboard.php');
                 exit;
             } else {
-                echo 'Invalid role';
+       echo 'Invalid usename';
+        // $err['password'] = 'Enter password';
+
             }
         } else {
-            echo 'Login failed';
+            // echo 'Login failed';
+            $err['user_type'] = 'Invalid Username';
         }
     }
 }
@@ -65,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section class="form-box">
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="login_form">
             <h3>LOGIN</h3>
-            <p>Already a registered member? Login here</p>
+            <span><?php echo isset($err['user_type'])?$err['user_type']:''; ?></span>
             <div class="field-group">
                 <label for="email"><b>Email:</b></label>
                 <input type="text" id="email" name="email">
