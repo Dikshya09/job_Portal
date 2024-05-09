@@ -1,14 +1,26 @@
 <?php
+<<<<<<< HEAD
+ $err = [];
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+=======
 session_start();
 require_once 'connection.php';
+>>>>>>> ef64c67179be69cf4673d71c02a00276a5fe6a07
 
 $connection = new mysqli('localhost', 'root', '', 'jobportal');
 
 $email = $password = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+<<<<<<< HEAD
+   
+    
+=======
     $err = [];
 
+>>>>>>> ef64c67179be69cf4673d71c02a00276a5fe6a07
     if (isset($_POST['email']) && !empty($_POST['email']) && trim($_POST['email'])) {
         $email = $_POST['email'];
     } else {
@@ -21,6 +33,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $err['password'] = 'Enter password';
     }
 
+<<<<<<< HEAD
+    if (count($err) == 0) {
+        $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+        $result = $connection->query($sql);
+        
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            if ($user['user_type'] == 'jobseeker') {
+                $_SESSION['email'] = $email;
+                header('location:jobseekerdashboard.php');
+                exit;
+            } elseif ($user['user_type'] == 'employer') {
+                $_SESSION['email'] = $email;
+                header('location:empdashboard.php');
+                exit;
+            } else {
+       echo 'Invalid usename';
+        // $err['password'] = 'Enter password';
+
+            }
+        } else {
+            // echo 'Login failed';
+            $err['user_type'] = 'Invalid Username';
+=======
     // If there are no errors, proceed with authentication
     if (empty($err)) {
         // Prepare the SQL statement to fetch user credentials
@@ -63,6 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             // Authentication failed, display error message or redirect back to login page with error
             $err['authentication'] = 'Invalid email or password';
+>>>>>>> ef64c67179be69cf4673d71c02a00276a5fe6a07
         }
     }
 }
@@ -91,6 +128,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section class="form-box">
         <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" name="login_form">
             <h3>LOGIN</h3>
+<<<<<<< HEAD
+            <span><?php echo isset($err['user_type'])?$err['user_type']:''; ?></span>
+=======
+>>>>>>> ef64c67179be69cf4673d71c02a00276a5fe6a07
             <div class="field-group">
                 <label for="email"><b>Email:</b></label>
                 <input type="text" id="email" name="email">

@@ -116,7 +116,7 @@
               <i class="fab fa-github"></i>
             </li>
             </ul>
-           <button class="button2">View CV</button>
+         
          
       </div>
   </div> 

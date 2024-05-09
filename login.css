@@ -9,9 +9,14 @@
         border: 1px solid #338573;
         box-shadow: 0 0 22px 0 rgba(0, 0, 0, 0.2);
         padding: 30px;
-        margin: 30px auto;
+        margin: 100px auto;
         max-width: 600px;
+<<<<<<< HEAD
+        border-radius: 10px;
+
+=======
         border-radius: 5px;
+>>>>>>> ef64c67179be69cf4673d71c02a00276a5fe6a07
     }
     .field-group{
         display: flex;
@@ -19,7 +24,6 @@
         align-items: center;
         justify-content: space-between;
         margin-bottom:10px ;
-        
     }
     .field-group input,
     .field-group textarea, 
@@ -27,10 +31,19 @@
         width: calc(100% - 30px);
     }
     input, select{
+<<<<<<< HEAD
+    height:38px;
+    border: 1px solid#b8b8b8;
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 20px;
+    font-size: medium;
+=======
         height: 38px;
         padding: 6px;
         border: 1px solid#ddd;
      border-radius: 6px;
+>>>>>>> ef64c67179be69cf4673d71c02a00276a5fe6a07
     }
     button[type=login]{
         height: 40px;
